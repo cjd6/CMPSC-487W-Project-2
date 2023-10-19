@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Add new Item</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style>
+        p{
+            text-align: center;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        td{
+            text-align: left;
+            vertical-align: top;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>Add new Item</h1>
+
+<form action="/addItem" th:action="@{/newItemPage}" method="get">
+    <p>
+        <label for="nameField"></label>
+        <input type="text" th:field="*{name}" id="nameField" name="nameField" placeholder="Item Name">
+    </p>
+    <p>
+        <label for="descField"></label>
+        <input type="text" width="200px" th:field="*{description}"
+               id="descField" name="descField" placeholder="Description">
+    </p>
+    <p>
+        <label for="urlField"></label>
+        <input type="text" width="200px" height="200px" th:field="*{imageURL}"
+               id="urlField" name="urlField" placeholder="Image URL">
+    <p>
+        <input type="submit" onclick="update()" value="Add item">
+    </p>
+</form>
+
+<form action="/" th:action="@{/}" method="get">
+    <p>
+        <input type="submit" value="Return to Query Screen">
+    </p>
+</form>
+
+<p id="output"></p>
+
+<script>
+    function update(){
+        document.getElementById("output").innerHTML = "Item added";
+    }
+</script>
+
+</body>
+
+</html>

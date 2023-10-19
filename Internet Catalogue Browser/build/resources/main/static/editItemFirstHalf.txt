@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Item Catalogue</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style>
+
+        img{
+            width: 100px;
+            height: 100px;
+        }
+
+        p{
+            text-align: center;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        td{
+            text-align: left;
+            vertical-align: top;
+        }
+
+        #form{
+            text-align: left;
+        }
+
+        div{
+            justify-self: center;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .oddrow{
+            background-color:#ffffff;
+        }
+
+        .evenrow{
+            background-color:#dddddd;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>Edit Item</h1>

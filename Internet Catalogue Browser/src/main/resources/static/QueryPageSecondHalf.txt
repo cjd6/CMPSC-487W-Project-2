@@ -1,0 +1,28 @@
+<p id="output" value=output></p>
+
+<form action="/findItemPage" th:action="@{/}" method="get">
+    <p>
+        <input type="submit" value="Edit item" />
+    </p>
+</form>
+
+<form action="/showNewItemPage" th:action="@{/}" method="get">
+    <p>
+        <input type="submit" value="Add new item" />
+    </p>
+</form>
+
+<script>
+    function uncheckNameBox(){
+        document.getElementById("nameBox").checked = false;
+    }
+
+    function uncheckIdBox(){
+        document.getElementById("idBox").checked= false
+    }
+
+</script>
+
+</body>
+
+</html>

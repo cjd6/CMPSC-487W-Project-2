@@ -59,48 +59,30 @@ public class DBManager {
 
     public ResultSet queryData(String id, String keyword, boolean orderByID){
         try {
-
             StringBuilder s = new StringBuilder();
-            s.append("select * from items ");
+            s.append("select * from items where (description like ? or name like ?) ");
 
-            int numParams = 0;
-
-            if (!(id.equals("") && keyword.equals(""))){
-                s.append("where ");
-                int idInt;
+            if (!id.equals("")){
                 try {
-                    idInt = Integer.parseInt(id);
-                    s.append("itemID = ");
+                    int idInt = Integer.parseInt(id);
+                    s.append("and itemID = ");
                     s.append(idInt);
                     s.append(" ");
-
-                    if (!keyword.equals("")){
-                        s.append("and ");
-                    }
-
-                } catch (Exception ignored){}
-
-                if (!keyword.equals("")){
-                    s.append("description like ? or name like ? ");
-                    numParams += 2;
+                } catch (Exception ignored) {
+                    return null;
                 }
             }
 
-            s.append("order by ?;");
+            if (orderByID){
+                s.append("order by itemID;");
+            } else {
+                s.append("order by name;");
+            }
 
             PreparedStatement ps = connection.prepareStatement(s.toString());
 
-            if (numParams == 2){
-                ps.setString(1, "%" + keyword + "%");
-                ps.setString(2, "%" + keyword + "%");
-            }
-
-
-            if(orderByID){
-                ps.setString(numParams + 1, "itemID");
-            } else {
-                ps.setString(numParams + 1, "name");
-            }
+            ps.setString(1, "%" + keyword + "%");
+            ps.setString(2, "%" + keyword + "%");
 
             return ps.executeQuery();
         } catch (Exception ignored){

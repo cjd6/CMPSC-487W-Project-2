@@ -1,9 +1,0 @@
-<form action="/" th:action="@{/}" method="get">
-    <p>
-        <input type="submit" value="Return to Query Screen">
-    </p>
-</form>
-
-</body>
-
-</html>
